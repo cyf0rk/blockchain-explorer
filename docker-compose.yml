@@ -1,0 +1,16 @@
+services:
+  explorer-api:
+    image: explorer-api
+    build:
+      context: ./explorer-api/
+      dockerfile: Dockerfile
+      target: dev
+    container_name: explorer-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./explorer-api/
+        target: /app
+    environment:
+      - APP_ENV=development
